@@ -10,6 +10,7 @@ namespace Binode.Data.Model
         public string AciklamaNotu { get; set; }
         public Kategori Kategori { get; set; }
         public IcerikTipi Tip { get; set; }
+        public string Content { get; set; }
     }
 
     public enum IcerikTipi
@@ -19,6 +20,4 @@ namespace Binode.Data.Model
         Ses,
         Video
     }
-
-    
 }
