@@ -36,8 +36,9 @@ namespace Binode.Presentation.WinForm
                 if(node is null)
                 {
                     var nnode = new TreeNode(kategori.Isim);
-
+                    nnode.ContextMenuStrip = contextMenuStrip1;
                     treeKategori.Nodes.Add(nnode);
+                    nnode.Tag = kategori;
 
                     if(kategori.AltKategori != null)
                     {
@@ -46,15 +47,57 @@ namespace Binode.Presentation.WinForm
                 }
                 else
                 {
-                    node.Nodes.Add(kategori.Isim);
+                    var nnode = node.Nodes.Add(kategori.Isim);
+                    nnode.ContextMenuStrip = contextMenuStrip1;
 
+                    nnode.Tag = kategori;
                     if (kategori.AltKategori != null)
                     {
-                        KategoriyiTreeviewAEkle(kategori.AltKategori, node.Nodes[node.Nodes.Count-1]);
+                        KategoriyiTreeviewAEkle(kategori.AltKategori,nnode);
                     }
                 }
             }
 
+        }
+
+        private void treeKategori_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            listView1.Items.Clear();
+
+            ListViewDoldur(e.Node);
+        }
+
+        private void ListViewDoldur(TreeNode node)
+        {
+            var kategori = node.Tag as Kategori;
+
+            //Hatalı olabilir
+            if(kategori?.Icerik?.Count == null)
+            {
+                return;
+            }
+
+            var group = new ListViewGroup();
+            group.Name = kategori.Isim;
+            group.Header = kategori.Isim;
+
+            listView1.Groups.Add(group);
+            foreach (var icerik in kategori.Icerik)
+            {
+                var li = new ListViewItem(new[] { icerik.Isim, kategori.Isim });
+                li.Group = group;
+                listView1.Items.Add(li);
+            }
+
+            //listView1.Groups.Add(group);
+
+            if(node.Nodes != null)
+            {
+                foreach (TreeNode subNode in node.Nodes)
+                {
+                    ListViewDoldur(subNode);
+                }
+            }
         }
     }
 }

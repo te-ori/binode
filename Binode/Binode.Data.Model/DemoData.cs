@@ -86,6 +86,19 @@ namespace Binode.Data.Model
                         new Icerik { Isim= "Yerel Coğrafya 02", EklenmeTarihi = DateTime.Now, Kategori = kategori[0].AltKategori[0]},
                         new Icerik { Isim= "Yerel Coğrafya 03", EklenmeTarihi = DateTime.Now, Kategori = kategori[0].AltKategori[0]},
                     };
+            kategori[0].AltKategori[0].AltKategori[0].Icerik = new List<Icerik>
+                    {
+                        new Icerik { Isim= "Doğu Anadolu Coğrafyası 01", EklenmeTarihi = DateTime.Now, Kategori = kategori[0].AltKategori[0].AltKategori[0]},
+                        new Icerik { Isim= "Doğu Anadolu Coğrafyası 02", EklenmeTarihi = DateTime.Now, Kategori = kategori[0].AltKategori[0].AltKategori[0]},
+                        new Icerik { Isim= "Doğu Anadolu Coğrafyası 03", EklenmeTarihi = DateTime.Now, Kategori = kategori[0].AltKategori[0].AltKategori[0]},
+                    };
+
+            kategori[0].AltKategori[1].Icerik = new List<Icerik>
+                    {
+                        new Icerik { Isim= "Kültürel Coğrafya 01", EklenmeTarihi = DateTime.Now, Kategori = kategori[0].AltKategori[1]},
+                        new Icerik { Isim= "Kültürel Coğrafya 02", EklenmeTarihi = DateTime.Now, Kategori = kategori[0].AltKategori[1]},
+                        new Icerik { Isim= "Kültürel Coğrafya 03", EklenmeTarihi = DateTime.Now, Kategori = kategori[0].AltKategori[1]},
+                    };
 
             return kategori;
         }
