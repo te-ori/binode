@@ -200,7 +200,7 @@ namespace Binode.Presentation.WinForm
             switch (content.Tip)
             {
                 case IcerikTipi.Metin:
-                    ShowVideoContentPlayerForm();
+                    ShowTextContentViewForm(content);
                     break;
                 case IcerikTipi.Pdf:
                     break;
@@ -211,6 +211,13 @@ namespace Binode.Presentation.WinForm
                 default:
                     break;
             }
+        }
+
+        private void ShowTextContentViewForm(Icerik content)
+        {
+            var textContentViewverForm = new TextContentViewForm();
+            textContentViewverForm.Icerik = content;
+            textContentViewverForm.ShowDialog();
         }
 
         private void ShowVideoContentPlayerForm()
