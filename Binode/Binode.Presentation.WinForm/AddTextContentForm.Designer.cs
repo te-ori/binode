@@ -56,8 +56,9 @@
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "EKLE";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // AddTextContent
+            // AddTextContentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -65,7 +66,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtContent);
             this.Controls.Add(this.txtTitle);
-            this.Name = "AddTextContent";
+            this.Name = "AddTextContentForm";
             this.Text = "AddTextContent";
             this.Load += new System.EventHandler(this.AddTextContent_Load);
             this.ResumeLayout(false);

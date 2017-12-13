@@ -31,12 +31,14 @@ namespace Binode.Presentation.WinForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BinodeMainForm));
             this.grpKategori = new System.Windows.Forms.GroupBox();
             this.treeKategori = new System.Windows.Forms.TreeView();
             this.grpIcerik = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imglContentSmallIcons = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +48,7 @@ namespace Binode.Presentation.WinForm
             this.videoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.grpKategori.SuspendLayout();
             this.grpIcerik.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -90,9 +93,10 @@ namespace Binode.Presentation.WinForm
             this.listView1.Location = new System.Drawing.Point(6, 19);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(554, 405);
+            this.listView1.SmallImageList = this.imglContentSmallIcons;
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.View = System.Windows.Forms.View.SmallIcon;
             // 
             // columnHeader1
             // 
@@ -101,6 +105,13 @@ namespace Binode.Presentation.WinForm
             // columnHeader2
             // 
             this.columnHeader2.Text = "Kategori";
+            // 
+            // imglContentSmallIcons
+            // 
+            this.imglContentSmallIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglContentSmallIcons.ImageStream")));
+            this.imglContentSmallIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglContentSmallIcons.Images.SetKeyName(0, "metin");
+            this.imglContentSmallIcons.Images.SetKeyName(1, "pdf");
             // 
             // contextMenuStrip1
             // 
@@ -150,6 +161,7 @@ namespace Binode.Presentation.WinForm
             this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
             this.pdfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pdfToolStripMenuItem.Text = "Pdf";
+            this.pdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
             // 
             // videoToolStripMenuItem
             // 
@@ -169,14 +181,18 @@ namespace Binode.Presentation.WinForm
             this.toolStripMenuItem3.Size = new System.Drawing.Size(169, 22);
             this.toolStripMenuItem3.Text = "Sil";
             // 
-            // BinodeMain
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // BinodeMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 454);
             this.Controls.Add(this.grpIcerik);
             this.Controls.Add(this.grpKategori);
-            this.Name = "BinodeMain";
+            this.Name = "BinodeMainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpKategori.ResumeLayout(false);
@@ -205,6 +221,8 @@ namespace Binode.Presentation.WinForm
         private System.Windows.Forms.ToolStripMenuItem pdfToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem videoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sesToolStripMenuItem;
+        private System.Windows.Forms.ImageList imglContentSmallIcons;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

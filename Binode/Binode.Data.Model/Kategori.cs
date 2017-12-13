@@ -21,6 +21,7 @@ namespace Binode.Data.Model
         public Kategori()
         {
             AltKategori = new List<Kategori>();
+            Icerik = new List<Model.Icerik>();
         }
     }
 }
