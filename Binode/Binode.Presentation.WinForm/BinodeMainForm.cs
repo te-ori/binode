@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace Binode.Presentation.WinForm
 {
-    public partial class Form1 : Form
+    public partial class BinodeMainForm : Form
     {
         private TreeNode _rightClicknode;
 
-        public Form1()
+        public BinodeMainForm()
         {
             InitializeComponent();
         }
@@ -149,6 +149,12 @@ namespace Binode.Presentation.WinForm
                 Tag = yeniKAtegori,
                 ContextMenuStrip = contextMenuStrip1
             });
+        }
+
+        private void metinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var textContentForm = new AddTextContentForm();
+            textContentForm.ShowDialog();
         }
     }
 }
