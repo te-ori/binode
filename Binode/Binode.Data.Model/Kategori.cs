@@ -18,5 +18,9 @@ namespace Binode.Data.Model
         public DateTime EklenmeTarihi { get; set; }
         public string Ikon { get; set; }
 
+        public Kategori()
+        {
+            AltKategori = new List<Kategori>();
+        }
     }
 }
