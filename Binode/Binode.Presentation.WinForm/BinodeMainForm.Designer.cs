@@ -97,6 +97,7 @@ namespace Binode.Presentation.WinForm
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.SmallIcon;
+            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -112,6 +113,8 @@ namespace Binode.Presentation.WinForm
             this.imglContentSmallIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imglContentSmallIcons.Images.SetKeyName(0, "metin");
             this.imglContentSmallIcons.Images.SetKeyName(1, "pdf");
+            this.imglContentSmallIcons.Images.SetKeyName(2, "video");
+            this.imglContentSmallIcons.Images.SetKeyName(3, "ses");
             // 
             // contextMenuStrip1
             // 
@@ -168,12 +171,14 @@ namespace Binode.Presentation.WinForm
             this.videoToolStripMenuItem.Name = "videoToolStripMenuItem";
             this.videoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.videoToolStripMenuItem.Text = "Video";
+            this.videoToolStripMenuItem.Click += new System.EventHandler(this.videoToolStripMenuItem_Click);
             // 
             // sesToolStripMenuItem
             // 
             this.sesToolStripMenuItem.Name = "sesToolStripMenuItem";
             this.sesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sesToolStripMenuItem.Text = "Ses";
+            this.sesToolStripMenuItem.Click += new System.EventHandler(this.sesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
