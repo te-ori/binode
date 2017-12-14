@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Binode.Data.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace Binode.Presentation.WinForm
 {
     public partial class VideoContentPlayerForm : Form
     {
+        public Icerik Icerik { get; set; }
+
         public VideoContentPlayerForm()
         {
             InitializeComponent();
@@ -19,7 +22,9 @@ namespace Binode.Presentation.WinForm
 
         private void VideoContentPlayerForm_Load(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.URL = @"C:\Users\BEM\Downloads\SampleVideo_720x480_5mb.mp4";
+            label1.Text = Icerik.Isim;
+            label2.Text = Icerik.Kategori.Isim;
+            axWindowsMediaPlayer1.URL = Icerik.Content;
         }
     }
 }

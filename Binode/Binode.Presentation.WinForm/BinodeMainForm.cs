@@ -206,7 +206,7 @@ namespace Binode.Presentation.WinForm
                     break;
                 case IcerikTipi.Ses:
                     break;
-                case IcerikTipi.Video:ShowVideoContentPlayerForm();
+                case IcerikTipi.Video:ShowVideoContentPlayerForm(content);
                     break;
                 default:
                     break;
@@ -220,9 +220,10 @@ namespace Binode.Presentation.WinForm
             textContentViewverForm.ShowDialog();
         }
 
-        private void ShowVideoContentPlayerForm()
+        private void ShowVideoContentPlayerForm(Icerik content)
         {
             var videoContentPlayerForm = new VideoContentPlayerForm();
+            videoContentPlayerForm.Icerik = content;
             videoContentPlayerForm.ShowDialog();
         }
 
@@ -234,6 +235,12 @@ namespace Binode.Presentation.WinForm
         private void sesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddFileContent("WAV | *.wav", IcerikTipi.Ses);
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            _rightClicknode.Remove();
+            RefreshListView();
         }
     }
 }
