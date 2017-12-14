@@ -66,9 +66,8 @@ namespace Binode.Presentation.WinForm
 
         private void treeKategori_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            listView1.Items.Clear();
+            RefreshListView();
 
-            ListViewDoldur(e.Node);
         }
 
         private void ListViewDoldur(TreeNode node)
@@ -106,6 +105,56 @@ namespace Binode.Presentation.WinForm
             }
         }
 
+        private void ListViewDoldurVTurweGoreGrupla(TreeNode node)
+        {
+            var kategori = node.Tag as Kategori;
+
+            //Hatalı olabilir
+            if (kategori?.Icerik?.Count == null)
+            {
+                return;
+            }
+
+            
+            foreach (var icerik in kategori.Icerik)
+            {
+                ListViewGroup group = null;
+
+                foreach (ListViewGroup g in listView1.Groups)
+                {
+                    if (g.Name == icerik.Tip.ToString())
+                    {
+                        group = g;
+                        break;
+                    }
+                }
+
+                if (group == null)
+                {
+                    group = new ListViewGroup();
+                    group.Name = icerik.Tip.ToString();
+                    group.Header = icerik.Tip.ToString();
+
+                    listView1.Groups.Add(group);
+                }
+                var li = new ListViewItem(new[] { icerik.Isim, kategori.Isim });
+                li.Group = group;
+                li.Tag = icerik;
+                li.ImageKey = icerik.Tip.ToString().ToLower();
+                listView1.Items.Add(li);
+            }
+
+            //listView1.Groups.Add(group);
+
+            if (node.Nodes != null)
+            {
+                foreach (TreeNode subNode in node.Nodes)
+                {
+                    ListViewDoldurVTurweGoreGrupla(subNode);
+                }
+            }
+        }
+
         private void treeKategori_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -135,7 +184,7 @@ namespace Binode.Presentation.WinForm
         private void RefreshListView()
         {
             listView1.Items.Clear();
-            ListViewDoldur(treeKategori.SelectedNode);
+            ListViewDoldurVTurweGoreGrupla(treeKategori.SelectedNode);
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)

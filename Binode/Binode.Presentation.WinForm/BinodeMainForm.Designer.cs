@@ -49,6 +49,7 @@ namespace Binode.Presentation.WinForm
             this.sesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.grpKategori.SuspendLayout();
             this.grpIcerik.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -77,6 +78,7 @@ namespace Binode.Presentation.WinForm
             // 
             // grpIcerik
             // 
+            this.grpIcerik.Controls.Add(this.comboBox1);
             this.grpIcerik.Controls.Add(this.listView1);
             this.grpIcerik.Location = new System.Drawing.Point(218, 12);
             this.grpIcerik.Name = "grpIcerik";
@@ -90,9 +92,9 @@ namespace Binode.Presentation.WinForm
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.listView1.Location = new System.Drawing.Point(6, 19);
+            this.listView1.Location = new System.Drawing.Point(6, 47);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(554, 405);
+            this.listView1.Size = new System.Drawing.Size(554, 377);
             this.listView1.SmallImageList = this.imglContentSmallIcons;
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -124,7 +126,7 @@ namespace Binode.Presentation.WinForm
             this.toolStripMenuItem4,
             this.toolStripMenuItem3});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 92);
             this.contextMenuStrip1.Text = "Yeniden Adlandır";
             // 
             // toolStripMenuItem1
@@ -155,28 +157,28 @@ namespace Binode.Presentation.WinForm
             // metinToolStripMenuItem
             // 
             this.metinToolStripMenuItem.Name = "metinToolStripMenuItem";
-            this.metinToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.metinToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.metinToolStripMenuItem.Text = "Metin";
             this.metinToolStripMenuItem.Click += new System.EventHandler(this.metinToolStripMenuItem_Click);
             // 
             // pdfToolStripMenuItem
             // 
             this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
-            this.pdfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pdfToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.pdfToolStripMenuItem.Text = "Pdf";
             this.pdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
             // 
             // videoToolStripMenuItem
             // 
             this.videoToolStripMenuItem.Name = "videoToolStripMenuItem";
-            this.videoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.videoToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.videoToolStripMenuItem.Text = "Video";
             this.videoToolStripMenuItem.Click += new System.EventHandler(this.videoToolStripMenuItem_Click);
             // 
             // sesToolStripMenuItem
             // 
             this.sesToolStripMenuItem.Name = "sesToolStripMenuItem";
-            this.sesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sesToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.sesToolStripMenuItem.Text = "Ses";
             this.sesToolStripMenuItem.Click += new System.EventHandler(this.sesToolStripMenuItem_Click);
             // 
@@ -190,6 +192,17 @@ namespace Binode.Presentation.WinForm
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Kategori",
+            "Belge Türü"});
+            this.comboBox1.Location = new System.Drawing.Point(439, 17);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 2;
             // 
             // BinodeMainForm
             // 
@@ -229,6 +242,7 @@ namespace Binode.Presentation.WinForm
         private System.Windows.Forms.ToolStripMenuItem sesToolStripMenuItem;
         private System.Windows.Forms.ImageList imglContentSmallIcons;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
