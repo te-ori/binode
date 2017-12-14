@@ -105,11 +105,28 @@ namespace Binode.Presentation.WinForm
             }
         }
 
+        private Dictionary<IcerikTipi, ListViewGroup> typeGroups = new Dictionary<IcerikTipi, ListViewGroup>();
         private void ListViewDoldurVTurweGoreGrupla(TreeNode node)
         {
             var kategori = node.Tag as Kategori;
 
             //Hatalı olabilir
+            //Null Check
+            //if(kategori == null || kategori.Icerik == null|| kategori.Icerik.H == null || || kategori.Icerik.H.Y == null || kategori.Icerik.Count <1)
+            //{
+            //    return;
+            //}
+
+            //if (kategori.Icerik == null)
+            //{
+            //    return;
+            //}
+
+            //if (kategori.Icerik.Count <1)
+            //{
+            //    return;
+            //}
+
             if (kategori?.Icerik?.Count == null)
             {
                 return;
@@ -118,27 +135,14 @@ namespace Binode.Presentation.WinForm
             
             foreach (var icerik in kategori.Icerik)
             {
-                ListViewGroup group = null;
-
-                foreach (ListViewGroup g in listView1.Groups)
+                if (!typeGroups.ContainsKey(icerik.Tip))
                 {
-                    if (g.Name == icerik.Tip.ToString())
-                    {
-                        group = g;
-                        break;
-                    }
+                    typeGroups.Add(icerik.Tip, new ListViewGroup { Name = icerik.Tip.ToString(), Header = icerik.Tip.ToString() });
+                    listView1.Groups.Add(typeGroups[icerik.Tip]);
                 }
 
-                if (group == null)
-                {
-                    group = new ListViewGroup();
-                    group.Name = icerik.Tip.ToString();
-                    group.Header = icerik.Tip.ToString();
-
-                    listView1.Groups.Add(group);
-                }
                 var li = new ListViewItem(new[] { icerik.Isim, kategori.Isim });
-                li.Group = group;
+                li.Group = typeGroups[icerik.Tip];
                 li.Tag = icerik;
                 li.ImageKey = icerik.Tip.ToString().ToLower();
                 listView1.Items.Add(li);
@@ -184,7 +188,17 @@ namespace Binode.Presentation.WinForm
         private void RefreshListView()
         {
             listView1.Items.Clear();
-            ListViewDoldurVTurweGoreGrupla(treeKategori.SelectedNode);
+            //if(comboBox1.SelectedItem != null && comboBox1.SelectedItem.ToString() == "Belge Türü")
+            if(comboBox1.SelectedItem?.ToString() == "Belge Türü")
+            {
+                typeGroups = new Dictionary<IcerikTipi, ListViewGroup>();
+                
+                ListViewDoldurVTurweGoreGrupla(treeKategori.SelectedNode);
+            }
+            else
+            {
+                ListViewDoldur(treeKategori.SelectedNode);
+            }
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -289,6 +303,11 @@ namespace Binode.Presentation.WinForm
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             _rightClicknode.Remove();
+            RefreshListView();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
             RefreshListView();
         }
     }
